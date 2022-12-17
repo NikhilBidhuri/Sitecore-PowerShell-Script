@@ -1,5 +1,5 @@
 # Requirement  : we want to fetch all items which has letter X splited by . in field of item
-# like in field we have value (X.Nikhil) , (X.Ram) , (Y.Nikhil) , (Y.Ram)
+# like we have 4 items and in field we have value (X.Nikhil) , (X.Ram) , (Y.Nikhil) , (Y.Ram)
 # so this will get only first two
 
 
