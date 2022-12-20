@@ -21,7 +21,7 @@
 
 
 
-Items = Get-ChildItem master:"/Path" -recurse | Where-Object {$_.Fields["messageID"].Value.Split(".") -contains ("X")}
+$Items = Get-ChildItem master:"/Path" -recurse | Where-Object {$_.Fields["messageID"].Value.Split(".") -contains ("X")}
 foreach ($item in $Items)
 {
 	$item.Path.Paths

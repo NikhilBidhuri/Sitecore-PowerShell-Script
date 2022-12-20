@@ -1,6 +1,6 @@
 # Put item path in //Path 
 
-$ItemsToBeDeployed = @(
+$Items = @(
 @{ Recursive = $TRUE; Source = "//Path"});
 
 $ErrorActionPreference = "Stop"
@@ -8,9 +8,8 @@ $ErrorActionPreference = "Stop"
 $Package = New-Package -Name "//Name";
 $Package.Sources.Clear();
 $Package.Metadata.Publisher = "Nikhil";
-$Package.Metadata.Version = Get-Date -Format FileDateTimeUniversal;
 
-ForEach ($Item in $ItemsToBeDeployed)
+ForEach ($Item in $Items)
 {
   if ($Item.Recursive)
   {
