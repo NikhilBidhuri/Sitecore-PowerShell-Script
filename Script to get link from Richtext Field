@@ -1,0 +1,21 @@
+# Assuming you have HtmlAgilityPack installed
+# You can install it using Install-Package HtmlAgilityPack
+
+$Items = Get-ChildItem -Path 'master:/sitecore/content/AllState/allstateCA/Home' -Recurse -Language 'en-ca'
+
+foreach ($item in $Items)
+{
+    $LinkFieldEnglish = $item.Fields | Where-Object { $_.Type -eq 'Rich Text' }
+
+    foreach ($field in $LinkFieldEnglish)
+    {
+        $htmlDocument = New-Object -TypeName HtmlAgilityPack.HtmlDocument
+        $htmlDocument.LoadHtml($field.Value)
+
+        foreach ($node in $htmlDocument.DocumentNode.SelectNodes("//a[@href]"))
+        {
+            $linkValue = $node.InnerHtml
+            Write-Host $linkValue
+        }
+    }
+}
